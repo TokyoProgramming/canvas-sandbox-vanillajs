@@ -1,36 +1,45 @@
-window.addEventListener('load', () => {
-  const canvas = document.querySelector('#canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.height = 600;
-  canvas.width = 600;
-  // variables
-  let painting = false;
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
-  const x = canvas.width;
-  const y = canvas.height;
+// variables
+let painting = false;
+let x = 0;
+let y = 0;
 
-  const startPosition = (e) => {
-    painting = true;
-    draw(e);
-  };
-  const endPosition = () => {
+const startPosition = (e) => {
+  x = e.offsetX;
+  y = e.offsetY;
+  painting = true;
+};
+
+const endPosition = (e) => {
+  if (painting === true) {
+    drawLine(ctx, x, y, e.offsetX, e.offsetY);
+    x = 0;
+    y = 0;
     painting = false;
-    ctx.beginPath();
-  };
+  }
+};
 
-  const draw = (e) => {
-    if (!painting) return;
+const draw = (e) => {
+  if (painting === true) {
+    drawLine(ctx, x, y, e.offsetX, e.offsetY);
+    x = e.offsetX;
+    y = e.offsetY;
+  }
+};
 
-    ctx.lineWidth = 10;
-    ctx.lineCap = 'round';
-    ctx.lineTo(e.offSetX, e.offSetY);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(e.offSetX, e.offSetY);
-  };
+const drawLine = (ctx, x1, y1, x2, y2) => {
+  ctx.beginPath();
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 1;
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.closePath();
+};
 
-  // Event Listeners
-  canvas.addEventListener('mousedown', startPosition);
-  canvas.addEventListener('mouseup', endPosition);
-  canvas.addEventListener('mousemove', draw);
-});
+// EventListeners
+canvas.addEventListener('mousedown', startPosition);
+window.addEventListener('mouseup', endPosition);
+canvas.addEventListener('mousemove', draw);
