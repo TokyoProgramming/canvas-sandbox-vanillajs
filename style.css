@@ -8,13 +8,74 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: #fcdddd;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  transition: transform 0.3s ease;
 }
+.navbar {
+  position: relative;
+}
+
+h1 {
+  position: fixed;
+  color: #5f5f5f;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+}
+.fas.fa-bars {
+  position: absolute;
+
+  left: 20px;
+  top: 75px;
+  /* padding: 10px; */
+  cursor: pointer;
+  z-index: 2;
+}
+
 canvas {
-  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #fff;
   border-radius: 10px;
-  width: 600px;
-  height: 600px;
+  width: 800px;
+  height: 800px;
+}
+
+.options {
+  background-color: #faf0e6;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  z-index: 1;
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+.show {
+  transform: scaleX(1);
+}
+
+select {
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  width: auto;
+  height: auto;
+  background-color: #faf0e6;
+  margin-right: 20px;
+}
+
+.fas.fa-eraser {
+  cursor: pointer;
 }

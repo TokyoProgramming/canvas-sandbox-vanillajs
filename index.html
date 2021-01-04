@@ -3,31 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>canvas-sandbox</title>
   </head>
   <body>
-    <h1>canvas sandbox</h1>
-    <label
-      >Choose the drawing color:
-      <select class="colors" name="colors">
-        <option value="">Select One …</option>
-        <option value="black">black</option>
-        <option value="green">green</option>
-        <option value="red">red</option>
-      </select>
-    </label>
-    <label
-      >Choose the line Width:
-      <select class="lineWidth" name="lineWidth">
-        <option value="">Select One …</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-      </select>
-    </label>
+    <h1 id="h1">canvas Draw App</h1>
 
-    <canvas id="canvas" width="600" height="600"></canvas>
+    <i class="fas fa-bars" id="hamburger"></i>
+
+    <div class="options" id="menubar">
+      <label>
+        <i class="fas fa-palette"></i>
+
+        <select class="colors" name="colors">
+          <option value="">Select One …</option>
+          <option value="black" selected>black</option>
+          <option value="green">green</option>
+          <option value="red">red</option>
+          <option value="#fff">white</option>
+        </select>
+      </label>
+      <label
+        ><i class="fas fa-text-width"></i>
+        <select class="lineWidth" name="lineWidth">
+          <option value="">Select One …</option>
+          <option selected value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+        </select>
+      </label>
+
+      <div>
+        <span>
+
+          clearCanvas : <i class="fas fa-eraser" id="delete"></i></div>
+        </span>
+    </div>
+
+    <div id="canvas-area" style="position: relative">
+      <canvas id="canvas" height="800px" width="800px"></canvas>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
